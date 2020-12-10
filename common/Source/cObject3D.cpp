@@ -469,8 +469,6 @@ void cObject3D::CreateFromHeightMap( cImage *pImage, float width, float height, 
 		}
 	}
 
-	delete [] data;
-
 	CreateFromHeightMapFromData( pData, imgWidth, imgHeight, width, height, length, smoothing, split );
 	delete [] pData;
 }
@@ -518,8 +516,6 @@ void cObject3D::CreateFromHeightMap( const char *szHeightMap, float width, float
 				pData[ index ] = data[ index*4 ] * 256;
 			}
 		}
-
-		delete [] data;
 
 		CreateFromHeightMapFromData( pData, imgWidth, imgHeight, width, height, length, smoothing, split );
 		delete [] pData;

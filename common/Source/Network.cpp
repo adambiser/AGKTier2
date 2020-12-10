@@ -1726,7 +1726,7 @@ void cNetwork::CheckMessagesServer()
 							written = m_ppClientSock[ i ]->RecvData(pMsg->GetRaw()+total, size-total);
 							total += written;
 						}
-						pMsg->SetPos( 0 );
+						pMsg->SetPos( size );
 						pMsg->SetSize( size );
 						
 						cAutoLock autolock2( m_kMessageLock );
@@ -1752,7 +1752,7 @@ void cNetwork::CheckMessagesServer()
 							pMsg->m_iFromClientID = from;
 							pMsg->m_iToClientID = to;
 							pMsg->Copy( m_pRecvTail );
-							pMsg->SetPos( 0 );
+							pMsg->SetPos( size );
 							pMsg->SetSize( size );
 
 							m_pRecvTail->SetPos( 0 );

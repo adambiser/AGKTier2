@@ -23,9 +23,8 @@ ANativeActivity *g_pActivity = 0;
 
 void PlatformAppQuit()
 {
-	ANativeActivity_finish(g_pActivity);
 	//exit(0);
-	/*
+
 	jint lFlags = 0;
 	JNIEnv* lJNIEnv = g_pActivity->env;
 	JavaVM* vm = g_pActivity->vm;
@@ -59,7 +58,6 @@ void PlatformAppQuit()
 	else lJNIEnv->CallStaticVoidMethod( classHelper, method, lNativeActivity );
 
 	vm->DetachCurrentThread();
-	*/
 }
 
 extern "C"
@@ -324,11 +322,6 @@ extern "C"
 	{
 		App.End();
 		agk::CleanUp();
-
-		g_bFirstLoop = true;
-		wasPlaying = 0;
-		wasVideoPlaying = 0;
-		g_bIsTablet = false;
 	}
 
 	void devicerotate()

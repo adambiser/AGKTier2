@@ -40,18 +40,14 @@ using namespace AGK;
 	}
 	[viewController setActive];
     
-    UILocalNotification *localNotify = launchOptions[UIApplicationLaunchOptionsLocalNotificationKey];
+    NSDictionary *localNotify = launchOptions[UIApplicationLaunchOptionsLocalNotificationKey];
     if ( localNotify )
     {
-        NSDictionary *infoDict = localNotify.userInfo;
-        if ( infoDict )
+        NSDictionary *aps = [localNotify objectForKey:@"aps"];
+        if ( aps )
         {
-            NSDictionary *aps = [infoDict objectForKey:@"aps"];
-            if ( aps )
-            {
-                NSString *deeplink = [aps objectForKey:@"deeplink"];
-                if ( deeplink ) agk::HandleDeepLink( [deeplink UTF8String] );
-            }
+            NSString *deeplink = [aps objectForKey:@"deeplink"];
+            if ( deeplink ) agk::HandleDeepLink( [deeplink UTF8String] );
         }
     }
 
